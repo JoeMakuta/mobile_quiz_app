@@ -36,32 +36,40 @@ function Home() {
         
       }}
     >
+      
       {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
         <>
-        <view style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30 ,backgroundColor: "white", padding: 15}}>
+        <view style={{flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: "white", padding: 15, marginTop: 20}}>
 
-        <Text>Bienvenue Annette</Text>
+        <Text variant="titleSmall">Bienvenue Annette</Text>
         <br/>
         <Text>Veuillez entrer votre nom et votre email pour commencer</Text>
           <TextInput
+          label="Entrez votre mail"
+          type="outlined"
             onChangeText={handleChange('email')}
             onBlur={handleBlur('email')}
             value={values.email}
-            placeholder="Email"
             style={{marginBottom: 10, height: 40, borderColor: 'gray', borderWidth: 1}}
+            selectionColor="green"
+            textColor="black"
+            outlineColor="black"
           />
           {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
           <TextInput
+          label="Entrez votre Nom"
             onChangeText={handleChange('name')}
             onBlur={handleBlur('name')}
             value={values.name}
-            placeholder="Nom d'utilisateur"
+            // placeholder="Nom d'utilisateur"
+            selectionColor="black"
+            outlineColor="black"
             style={{marginBottom: 10, height: 40,  borderColor: 'gray', borderWidth: 1}}
-            textColor="green"
+            textColor="black"
           />
 
           {errors.name && <Text style={{ color: 'red' }}>{errors.name}</Text>}
-          <Button   style={{elevation: 4,backgroundColor: 'green', borderRadius: 10,fontWeight: "800" , color: "white"}} onPress={handleSubmit}>Commencer</Button>
+          <Button  textColor="white"  style={{elevation: 4,backgroundColor: 'green', borderRadius: 10,fontWeight: "800" , color: "white"}} onPress={handleSubmit}>Commencer</Button>
       </view>
         </>
       )}
