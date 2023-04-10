@@ -18,6 +18,15 @@ const Result = ({ navigation }) => {
           <Text style={styles.Home} >Home</Text>
         </TouchableOpacity>
       </View>
+
+      <View style={styles.failContainer}>
+        <Text style={styles.EndResult}>07/20</Text>
+        <TouchableOpacity style={styles.Touchable} onPress={() => navigation.navigate("Home")}>
+          <Text style={styles.Home} >Home</Text>
+        </TouchableOpacity>
+
+      </View>
+
     </View>
   ) 
 }
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
     margin: 'auto',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#6B8F71',
+    backgroundColor: '#04F866',
     borderRadius: 15
 
   },
@@ -78,6 +87,18 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     color: 'white'
+  },
+  failContainer:{
+    height: 350,
+    width: 385,
+    marginLeft: 15,
+    marginRight: 15,
+    marginTop: 20,
+    margin: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    borderRadius: 15
   }
 
 })
