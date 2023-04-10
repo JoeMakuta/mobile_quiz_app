@@ -41,12 +41,14 @@ function Home() {
         <view style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30 ,backgroundColor: "white", padding: 15}}>
 
         <Text>Bienvenue Annette</Text>
+        <br/>
+        <Text>Veuillez entrer votre nom et votre email pour commencer</Text>
           <TextInput
             onChangeText={handleChange('email')}
             onBlur={handleBlur('email')}
             value={values.email}
             placeholder="Email"
-            style={{marginBottom: 10}}
+            style={{marginBottom: 10, height: 40, borderColor: 'gray', borderWidth: 1}}
           />
           {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
           <TextInput
@@ -54,12 +56,12 @@ function Home() {
             onBlur={handleBlur('name')}
             value={values.name}
             placeholder="Nom d'utilisateur"
-            style={{marginBottom: 10}}
+            style={{marginBottom: 10, height: 40,  borderColor: 'gray', borderWidth: 1}}
             textColor="green"
           />
 
           {errors.name && <Text style={{ color: 'red' }}>{errors.name}</Text>}
-          <Button   style={{elevation: 4,backgroundColor: 'green', borderRadius: 8,fontWeight: "800" , color: "white"}} onPress={handleSubmit}>Commencer</Button>
+          <Button   style={{elevation: 4,backgroundColor: 'green', borderRadius: 10,fontWeight: "800" , color: "white"}} onPress={handleSubmit}>Commencer</Button>
       </view>
         </>
       )}
