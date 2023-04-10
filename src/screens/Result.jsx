@@ -25,6 +25,9 @@ export default Result
 
 const styles = StyleSheet.create({
 
+  container:{
+    marginTop:50,
+  },
   containtName: {
     marginTop: 20,
     marginLeft: 15,
