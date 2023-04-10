@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import MyButton from '../composant/Button';
+import Mymail from '../composant/MailInput';
 
 const Home = () => {
   const [name, setName] = React.useState('');
@@ -8,20 +9,22 @@ const Home = () => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30}}>
-      <Text>Bienvenue! Annette</Text>
+      <view style={{margin: 15}}>
+        <Text style={{fontWeight: "800"}}>Bienvenue! Annette</Text>
+      <Text style={{fontWeight: "600"}}>Veuillez entrer votre nom et votre email pour Commencer.</Text>
+        </view>
       <TextInput
         placeholder="Nom"
         value={name}
         onChangeText={(text) => setName(text)}
-        style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1}}
+        style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, borderRadius: 7, color: 'gray'}}
       />
       <TextInput
-        placeholder="Email"
+        placeholder="Entrez Votre Email"
         value={email}
         onChangeText={(text) => setEmail(text)}
-        style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1}}
+        style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, borderRadius: 7, color: 'gray'}}
       />
-      {/* <Button title="Commencer" onPress={() => alert('Commencer')}  style={{backgroudColor: 'green'}}/> */}
       <MyButton/>
     </View>
   );
