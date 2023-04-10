@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, TextInput, Button} from 'react-native';
+import {View, Text,  Button} from 'react-native';
+import { TextInput } from 'react-native-paper';
 import MyButton from '../composant/Button';
 import Mymail from '../composant/MailInput';
 
@@ -19,6 +20,20 @@ const Home = () => {
         onChangeText={(text) => setName(text)}
         style={{elevation: 4,height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, borderRadius: 7, color: 'gray'}}
       />
+
+<TextInput
+      mode="outlined"
+      label="Nom"
+      placeholder="Type something"
+      right={<TextInput.Affix text="/100" />}
+    />
+
+<TextInput
+      mode="outlined"
+      label="Email"
+      placeholder="Type something"
+      right={<TextInput.Affix text="/100" />}
+    />
       <TextInput
         placeholder="Entrez Votre Email"
         value={email}
