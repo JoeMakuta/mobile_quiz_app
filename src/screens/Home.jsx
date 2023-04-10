@@ -1,48 +1,61 @@
-import React from 'react';
-import {View, Text,  Button} from 'react-native';
-import { TextInput } from 'react-native-paper';
-import MyButton from '../composant/Button';
-import Mymail from '../composant/MailInput';
+import React, { createContext, useContext, useState } from 'react';
+import {View} from 'react-native';
+import { TextInput, Text, Button } from 'react-native-paper';
+import { Formik } from 'formik';
+import * as Yup from "yup";
 
+const validationSchema = 
+Yup.object().shape({
+  email: Yup.string()
+    .email('Veuillez entrer Une adresse email valide')
+    .required('Veuillez entrer une adresse email'),
+  nom: Yup.string()
+    .min(3, 'Le nom d\'utilisateur doit comporter au moins 3 caractères')
+    .required('Veuillez entrer un nom d\'utilisateur'),
+});
+
+
+const myContext = createContext();
 const Home = () => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
+  
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30, backgroundColor: "white"}}>
       <view style={{margin: 15, alignItems: "center"}}>
-        <Text style={{fontWeight: "800"}}>Bienvenue! Annette</Text>
-      <Text style={{fontWeight: "600"}}>Veuillez entrer votre nom et votre email pour Commencer.</Text>
-        </view>
-      <TextInput
-        placeholder="Nom"
-        value={name}
-        onChangeText={(text) => setName(text)}
-        style={{elevation: 4,height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, borderRadius: 7, color: 'gray'}}
-      />
+        <Text  variant="headlineSmall">Bienvenue! Annette</Text>
+        <br/>
+         <Text variant="titleLarge">Veuillez entrer votre nom et votre email pour Commencer.</Text>
+     </view>
+     <Text variant="titleLarge" activeOutlineColor="green">C'est Amusant</Text>
 
-<TextInput
-      mode="outlined"
-      label="Nom"
-      placeholder="Type something"
-      right={<TextInput.Affix text="/100" />}
-    />
+        <TextInput
+          mode="outlined"
+          label="Nom"
+          placeholder="Entrez Votre Nom"
+          right={<TextInput.Affix />}
+          value={name}
+          onChangeText={(text) => setName(text)}
+          activeOutlineColor="black"
+        />
+       <TextInput
+          mode="outlined"
+          label="Email"
+          placeholder="Entrez Votre Email"
+          right={<TextInput.Affix text="/100" />}
+          value={email}
+          onChangeText={() => setName(setEmail)}
+          activeOutlineColor="black"
 
-<TextInput
-      mode="outlined"
-      label="Email"
-      placeholder="Type something"
-      right={<TextInput.Affix text="/100" />}
-    />
-      <TextInput
-        placeholder="Entrez Votre Email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        style={{elevation: 4,height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, borderRadius: 7, color: 'gray'}}
-      />
-      <MyButton/>
+        />
+        <Button icon="begin" style={{elevation: 4,backgroundColor: 'green', borderRadius: 8,fontWeight: "800",  }} mode="contained" onPress={() => console.log('Pressed')}>
+    Commencer
+  </Button>
+      {/* <MyButton/> */}
     </View>
   );
 };
 
 export default Home;
+
