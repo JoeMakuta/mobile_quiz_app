@@ -19,9 +19,19 @@ const myContext = createContext();
 const Home = () => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
-  
+  const {setValues} = useContext(myContext);
 
   return (
+    <Formik>
+      initialValues={{ email: '', name: ''}}
+      validationSchema={validationSchema}
+      onSubmit={(values)=>{
+        setEmail(values.email);
+
+      setName(values.name);
+      setValues(values)  
+      }}
+    
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30, backgroundColor: "white"}}>
       <view style={{margin: 15, alignItems: "center"}}>
         <Text  variant="headlineSmall">Bienvenue! Annette</Text>
@@ -48,12 +58,12 @@ const Home = () => {
           onChangeText={() => setName(setEmail)}
           activeOutlineColor="black"
 
-        />
+      />
         <Button icon="begin" style={{elevation: 4,backgroundColor: 'green', borderRadius: 8,fontWeight: "800",  }} mode="contained" onPress={() => console.log('Pressed')}>
-    Commencer
-  </Button>
-      {/* <MyButton/> */}
+        Commencer
+        </Button>
     </View>
+  </Formik>
   );
 };
 
