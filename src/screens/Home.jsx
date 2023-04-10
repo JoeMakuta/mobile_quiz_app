@@ -1,71 +1,70 @@
-import React, { createContext, useContext, useState } from 'react';
-import {View} from 'react-native';
-import { TextInput, Text, Button } from 'react-native-paper';
+import React from 'react';
+/**
+ * importation de Element pour le style Avec react-native-paper : Composants Près à l'emplois
+ */
+import { TextInput, Button, Text } from 'react-native-paper';
+/**
+ * importation de Formik
+ */
 import { Formik } from 'formik';
-import * as Yup from "yup";
+import * as Yup from 'yup';
+import { Alert } from 'react-native';
 
-const validationSchema = 
-Yup.object().shape({
+const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Veuillez entrer Une adresse email valide')
+    .email('Veuillez entrer une adresse email valide')
     .required('Veuillez entrer une adresse email'),
-  nom: Yup.string()
+  name: Yup.string()
     .min(3, 'Le nom d\'utilisateur doit comporter au moins 3 caractères')
     .required('Veuillez entrer un nom d\'utilisateur'),
 });
 
-
-const myContext = createContext();
-const Home = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const {setValues} = useContext(myContext);
-
+function Home() {
   return (
-    <Formik>
-      initialValues={{ email: '', name: ''}}
+    <Formik
+      initialValues={{ email: '', name: '' }}
       validationSchema={validationSchema}
-      onSubmit={(values)=>{
-        setEmail(values.email);
-
-      setName(values.name);
-      setValues(values)  
+      onSubmit={(values) => {
+        
+        /**
+         * Handle form submission here
+         * Redirection Ici Pour la Page des Questionn
+         * 
+         * 
+         */
+        Alert(console.log(values))
+        
       }}
-    
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30, backgroundColor: "white"}}>
-      <view style={{margin: 15, alignItems: "center"}}>
-        <Text  variant="headlineSmall">Bienvenue! Annette</Text>
-        <br/>
-         <Text variant="titleLarge">Veuillez entrer votre nom et votre email pour Commencer.</Text>
-     </view>
-     <Text variant="titleLarge" activeOutlineColor="green">C'est Amusant</Text>
+    >
+      {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+        <>
+        <view style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 30 ,backgroundColor: "white", padding: 15}}>
 
-        <TextInput
-          mode="outlined"
-          label="Nom"
-          placeholder="Entrez Votre Nom"
-          right={<TextInput.Affix />}
-          value={name}
-          onChangeText={(text) => setName(text)}
-          activeOutlineColor="black"
-        />
-       <TextInput
-          mode="outlined"
-          label="Email"
-          placeholder="Entrez Votre Email"
-          right={<TextInput.Affix text="/100" />}
-          value={email}
-          onChangeText={() => setName(setEmail)}
-          activeOutlineColor="black"
+        <Text>Bienvenue Annette</Text>
+          <TextInput
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
+            value={values.email}
+            placeholder="Email"
+            style={{marginBottom: 10}}
+          />
+          {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
+          <TextInput
+            onChangeText={handleChange('name')}
+            onBlur={handleBlur('name')}
+            value={values.name}
+            placeholder="Nom d'utilisateur"
+            style={{marginBottom: 10}}
+            textColor="green"
+          />
 
-      />
-        <Button icon="begin" style={{elevation: 4,backgroundColor: 'green', borderRadius: 8,fontWeight: "800",  }} mode="contained" onPress={() => console.log('Pressed')}>
-        Commencer
-        </Button>
-    </View>
-  </Formik>
+          {errors.name && <Text style={{ color: 'red' }}>{errors.name}</Text>}
+          <Button   style={{elevation: 4,backgroundColor: 'green', borderRadius: 8,fontWeight: "800" , color: "white"}} onPress={handleSubmit}>Commencer</Button>
+      </view>
+        </>
+      )}
+    </Formik>
   );
-};
+}
 
-export default Home;
-
+export default Home
