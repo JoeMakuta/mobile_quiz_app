@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
 
@@ -20,7 +20,7 @@ const Home = () => {
         onChangeText={(text) => setEmail(text)}
         style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1}}
       />
-      <Button title="Commencer" onPress={() => alert('Commencer')} />
+      <Button title="Commencer" onPress={() => navigation.navigate('Question')} />
     </View>
   );
 };
