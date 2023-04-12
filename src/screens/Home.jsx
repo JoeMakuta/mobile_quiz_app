@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
+import {Context} from '../state/index'
 
 const Home = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const context = useContext(Context)
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Bienvenue!</Text>
       <TextInput
         placeholder="Nom"
-        value={name}
-        onChangeText={(text) => setName(text)}
+        value={context.state.fullname}
+        onChangeText={(text) => context.setState({...context.state, fullname : text})}
         style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1}}
       />
       <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
+        placeholder='bakerathierry@gmail.com'
+        value={context.state.email}
+        onChangeText={(text) => context.setState({...context.state, email: text})}
         style={{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1}}
       />
       <Button title="Commencer" onPress={() => alert('Commencer')} />
