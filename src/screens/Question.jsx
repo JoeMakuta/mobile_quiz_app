@@ -5,7 +5,7 @@ const Question = (navigation) => {
     return (
         <View style={styles.container}>
             <View style={styles.top}>
-                <Text>Quel est le type d'un fichier javascrip?</Text>
+                <Text style={styles.question}>Quel est le type d'un fichier javascrip?</Text>
             </View>
             <View style={styles.options}>
                 <TouchableOpacity style={styles.assert}>
@@ -79,7 +79,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#534D4D",
         height: 50,
         padding:15,
+        borderRadius:10,
         
+    }, 
+    question: {
+        fontSize: 22,
     }
 
 });
