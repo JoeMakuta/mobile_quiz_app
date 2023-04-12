@@ -24,6 +24,7 @@ const Question = () => {
             <View style={styles.botton}>
                 <TouchableOpacity><Text>Annulé</Text></TouchableOpacity>
                 <TouchableOpacity><Text>Suivant</Text></TouchableOpacity>
+                <TouchableOpacity><Text>Terminer</Text></TouchableOpacity>
             </View>
         </View>
     )
