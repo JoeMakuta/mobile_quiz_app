@@ -4,6 +4,7 @@ import { Provider as PaperProvider, RadioButton, Button } from 'react-native-pap
 
 const Question = () => {
     const [value, setValue] = React.useState('first');
+    const data = require('../data/question.json');
 
     return (
         <PaperProvider>
