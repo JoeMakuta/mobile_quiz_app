@@ -20,7 +20,6 @@ const validationSchema = Yup.object().shape({
     .required("Veuillez entrer un nom d'utilisateur"),
 });
 
-function Home() {
   return (
     <Formik
       initialValues={{ email: "", name: "" }}
@@ -104,6 +103,6 @@ function Home() {
       )}
     </Formik>
   );
-}
+};
 
 export default Home;
