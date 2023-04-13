@@ -2,21 +2,36 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./screens/Home";
-import Question from "./screens/Question";
 import Result from "./screens/Result";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useState } from "react";
+import { State } from "./state";
+import { Context } from "./state";
+import Question from "./screens/Quiz";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [state, setState] = useState(new State());
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen component={Home} name="Home" />
-        <Stack.Screen component={Question} name="Question" />
-        <Stack.Screen component={Result} name="Result" />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Context.Provider value={{ state, setState }}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen component={Home} name="Home" />
+          <Stack.Screen
+            component={Question}
+            name="Question"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            component={Result}
+            options={{ headerShown: false }}
+            name="Result"
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Context.Provider>
   );
 }
 
