@@ -34,7 +34,8 @@ const Question = ({ navigation }) => {
   const handleNext = () => {
     validateAnswer();
     if (currentQuestionIndex == allQuestions.length - 1) {
-      Alert.alert("Votre score est de" + score);
+      //   Alert.alert("Votre score est de" + score);
+      navigation.navigate("Result");
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setCurrentOptionSelected(null);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Question = (navigation) => {
+const Question1 = (navigation) => {
     return (
         <View style={styles.container}>
             <View style={styles.top}>
@@ -30,7 +30,7 @@ const Question = (navigation) => {
     )
 }
 
-export default Question
+export default Question1
 
 const styles = StyleSheet.create({
     container: {
