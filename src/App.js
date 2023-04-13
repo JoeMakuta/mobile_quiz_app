@@ -17,10 +17,18 @@ export default function App() {
   return (
     <Context.Provider value={{ state, setState }}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Result">
           <Stack.Screen component={Home} name="Home" />
-          <Stack.Screen component={Question} name="Question" />
-          <Stack.Screen component={Result} name="Result" />
+          <Stack.Screen
+            component={Question}
+            name="Question"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            component={Result}
+            options={{ headerShown: false }}
+            name="Result"
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Context.Provider>
