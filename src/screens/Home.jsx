@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     .required("Veuillez entrer un nom d'utilisateur"),
 });
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <Formik
       initialValues={{ email: "", name: "" }}
@@ -32,6 +32,7 @@ const Home = () => {
          *
          *
          */
+        navigation.navigate("Question");
         Alert(console.log(values));
       }}
     >
@@ -60,6 +61,7 @@ const Home = () => {
                 height: 40,
                 borderColor: "gray",
                 borderWidth: 1,
+                width: 360,
               }}
               selectionColor="green"
               textColor="black"
@@ -80,6 +82,7 @@ const Home = () => {
                 marginBottom: 10,
                 height: 40,
                 borderColor: "gray",
+                width: 360,
                 borderWidth: 1,
               }}
               textColor="black"
@@ -94,6 +97,7 @@ const Home = () => {
                 borderRadius: 10,
                 fontWeight: "800",
                 color: "white",
+                width: 360,
               }}
               onPress={handleSubmit}
             >

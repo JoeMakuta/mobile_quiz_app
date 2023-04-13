@@ -2,10 +2,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./screens/Home";
-import Quiz from "./screens/Quiz";
 import Result from "./screens/Result";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
+import { State } from "./state";
+import { Context } from "./state";
+import Question from "./screens/Quiz";
 
 const Stack = createNativeStackNavigator();
 
