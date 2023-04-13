@@ -11,13 +11,12 @@ import { useState } from "react";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-  const [state, setState] = useState( new State)
+  const [state, setState] = useState(new State());
 
   return (
-    <Context.Provider value={{state , setState}}>
+    <Context.Provider value={{ state, setState }}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Question">
           <Stack.Screen component={Home} name="Home" />
           <Stack.Screen component={Question} name="Question" />
           <Stack.Screen component={Result} name="Result" />
