@@ -16,7 +16,7 @@ export default function App() {
   return (
     <Context.Provider value={{ state, setState }}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Question">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen component={Home} name="Home" />
           <Stack.Screen component={Question} name="Question" />
           <Stack.Screen component={Result} name="Result" />
