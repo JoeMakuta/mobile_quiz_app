@@ -11,7 +11,7 @@ const Result = ({ navigation }) => {
         <Text style={styles.Rslt}>RESULTAT</Text>
       </View>
       <View style={styles.containtName}>
-        <Text style={styles.Nom}>{state.name}</Text>
+        <Text style={styles.Nom}>{state.fullname}</Text>
         <Text>{state.email}</Text>
       </View>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 /**
  * importation de Element pour le style Avec react-native-paper : Composants Près à l'emplois
  */
@@ -23,6 +23,7 @@ const validationSchema = Yup.object().shape({
 import { Context } from "../state";
 
 const Home = ({ navigation }) => {
+  const { state, setState } = useContext(Context);
   return (
     <Formik
       initialValues={{ email: "", name: "" }}
@@ -51,7 +52,9 @@ const Home = ({ navigation }) => {
             }}
           >
             <Text variant="titleSmall">Bienvenue Annette</Text>
-            <Text>Veuillez entrer votre nom et votre email pour commencer</Text>
+            <Text>
+              Veuillez entrer votre nom et votre email pour commencer !
+            </Text>
             <TextInput
               label="Entrez votre mail"
               type="outlined"
