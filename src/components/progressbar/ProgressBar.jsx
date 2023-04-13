@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { View, Animated } from 'react-native';
 
-const ProgressBar = ({allQuestions}) => {
-    const [progress, setProgress] = useState(new Animated.Value(0));
+const ProgressBar = ({allQuestions, progress}) => {
     const progressAnim = progress.interpolate({
         inputRange: [0, allQuestions.length],
         outputRange: ['0%', '100%']
