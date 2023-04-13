@@ -93,3 +93,9 @@ let questionActif = {
         Reponse : 'Menteur',
     },
    ]
+
+   function chargeQuiz(indexQestion){
+    if(indexQestion < question.length){
+
+    }
+   }
