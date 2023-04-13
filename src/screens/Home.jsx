@@ -20,6 +20,8 @@ const validationSchema = Yup.object().shape({
     .required("Veuillez entrer un nom d'utilisateur"),
 });
 
+import { Context } from "../state";
+
 const Home = ({ navigation }) => {
   return (
     <Formik

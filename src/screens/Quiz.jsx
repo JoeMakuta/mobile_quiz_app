@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   StatusBar,
   View,
@@ -15,19 +15,22 @@ import {
 } from "react-native-paper";
 import questions from "../data/questions";
 import ProgressBar from "../components/progressbar/ProgressBar";
+import { Context } from "../state";
 
 const Question = ({ navigation }) => {
+  const { state, setState } = useContext(Context);
+
   const allQuestions = questions;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
-  const [score, setScore] = useState(0);
+  //   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(new Animated.Value(0));
 
   const validateAnswer = () => {
     let correct_option = allQuestions[currentQuestionIndex]["reponseIndex"];
     if (currentOptionSelected == correct_option) {
       // Set Score
-      setScore(score + 1);
+      setState({ ...state, score: state.score + 1 });
     }
   };
 
@@ -59,7 +62,7 @@ const Question = ({ navigation }) => {
             <Text style={styles.questionLabel}>
               {allQuestions[currentQuestionIndex]?.titre}
             </Text>
-            <Text>Score: {score}</Text>
+            <Text>Score: {state.score}</Text>
           </View>
           <View>
             <RadioButton.Group

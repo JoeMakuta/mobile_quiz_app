@@ -1,36 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
+import { Context } from "../state";
 
 const Result = ({ navigation }) => {
+  const { state, setState } = useContext(Context);
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.Rslt}>RESULTAT</Text>
       </View>
       <View style={styles.containtName}>
-        <Text style={styles.Nom}>Bonheur Bushiri</Text>
-        <Text>bonheurbushiri@gmail.com</Text>
-      </View>
-      <View style={styles.ContaintReslt}>
-        <Text style={styles.EndResult}>18/20</Text>
-        <TouchableOpacity
-          style={styles.Touchable}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={styles.Home}>Home</Text>
-        </TouchableOpacity>
+        <Text style={styles.Nom}>{state.name}</Text>
+        <Text>{state.email}</Text>
       </View>
 
-      <View style={styles.failContainer}>
-        <Text style={styles.EndResult}>07/20</Text>
-        <TouchableOpacity
-          style={styles.Touchable}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={styles.Home}>Home</Text>
-        </TouchableOpacity>
-      </View>
+      {state.score > 7 ? (
+        <View style={styles.ContaintReslt}>
+          <Text style={styles.EndResult}>{state.score}/15</Text>
+          <TouchableOpacity
+            style={styles.Touchable}
+            onPress={() => navigation.navigate("Home")}
+          >
+            <Text style={styles.Home}>Home</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={styles.failContainer}>
+          <Text style={styles.EndResult}>{state.score}/15</Text>
+          <TouchableOpacity
+            style={styles.Touchable}
+            onPress={() => navigation.navigate("Home")}
+          >
+            <Text style={styles.Home}>Home</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
