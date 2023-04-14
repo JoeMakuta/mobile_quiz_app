@@ -3,7 +3,7 @@ import { View, Animated } from 'react-native';
 
 const ProgressBar = ({allQuestions, progress}) => {
     const progressAnim = progress.interpolate({
-        inputRange: [0, allQuestions.length],
+        inputRange: [0, allQuestions.length -1 ],
         outputRange: ['0%', '100%']
     })
 

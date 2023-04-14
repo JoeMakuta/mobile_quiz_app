@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 export class State {
-  email = "Bonheur Bushiri";
-  fullname = "bonheurbushiri@gmail.com";
+  email = "";
+  fullname = "";
   score = 0;
 }
 
